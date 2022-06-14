@@ -1,0 +1,85 @@
+{
+  "name": "time-to-sleep",
+  "version": "0.1.0",
+  "main": "./public/electron.js",
+  "author": {
+    "name": "Gátomo",
+    "email": "no@no.no"
+  },
+  "description": "A simple app to shutdown your computer with a countdown",
+  "license": "MIT",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^13.0.0",
+    "@testing-library/user-event": "^13.2.1",
+    "electron-packager": "^15.5.1",
+    "moment": "^2.29.3",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:start": "concurrently \"cross-env BROWSER=none yarn start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:mac": "yarn build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js",
+    "electron": "electron . --devtools"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      "last 1 electron version"
+    ],
+    "development": [
+      "last 1 electron version"
+    ]
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "concurrently": "^7.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^19.0.3",
+    "electron-builder": "^23.0.3",
+    "electronmon": "^2.0.2",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24",
+    "wait-on": "^6.0.1"
+  },
+  "build": {
+    "asar": true,
+    "appId": "com.gatomo.timetosleep",
+    "productName": "Time to Sleep",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*",
+      "src/**/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "public/favicon.ico"
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "public/favicon.ico"
+    },
+    "linux": {
+      "target": "pacman",
+      "icon": "build/favicon.ico"
+    }
+  }
+}
