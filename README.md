@@ -6,4 +6,4 @@ Las descargas se encuentran disponibles para **Linux** y **Windows**
 
 Disfruta del programa ;)
 
-*Time to Sleep - MIT license*
+*Time to Sleep - GPL-3 license*
